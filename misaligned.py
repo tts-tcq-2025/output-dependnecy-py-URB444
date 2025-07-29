@@ -1,13 +1,19 @@
-
-def print_color_map():
+def get_color_map():
     major_colors = ["White", "Red", "Black", "Yellow", "Violet"]
     minor_colors = ["Blue", "Orange", "Green", "Brown", "Slate"]
+    color_map = []
     for i, major in enumerate(major_colors):
         for j, minor in enumerate(minor_colors):
-            print(f'{i * 5 + j} | {major} | {minor}')
-    return len(major_colors) * len(minor_colors)
+            pair_number = i * len(minor_colors) + j
+            color_map.append((pair_number, major, minor))
+    return color_map
 
+def print_color_map(color_map):
+    for tuples in color_map:
+        print(f'{tuples[0]} | {tuples[1]} | {tuples[2]}')
 
-result = print_color_map()
-assert(result == 25)
+# Usage and testing
+color_map = get_color_map()
+print_color_map(color_map)
+assert len(color_map) == 25
 print("All is well (maybe!)")
